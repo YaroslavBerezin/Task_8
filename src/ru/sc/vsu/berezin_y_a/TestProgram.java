@@ -10,7 +10,7 @@ public class TestProgram {
 
     public boolean test() throws IOException {
         FileWriter writer = new FileWriter("testFiles/testResult.txt");
-        if (logic.solution(testCase.arr1) == "no") {
+        if (logic.solution(testCase.arr1) != "no") {
             writer.write("Test 1 is not completed");
             writer.flush();
             writer.close();
