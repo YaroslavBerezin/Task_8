@@ -1,28 +1,13 @@
 package ru.sc.vsu.berezin_y_a;
 
+import ru.sc.vsu.berezin_y_a.utils.ArrayUtils;
+
 public class TestCase {
 
-    int[][] arr1 = new int[][] {    // no
-            {1, 2, 3, 8, 0},
-    };
-    int[][] arr2 = new int[][] {    // yes
-            {0},
-            {1},
-    };
-    int[][] arr3 = new int[][] {    // no
-            {5, 6},
-            {3, 4},
-            {1, 2},
-    };
-    int[][] arr4 = new int[][] {    // yes
-            {2, 1},
-            {3, 0},
-            {4, -1},
-            {5, -2},
-            {6, -3},
-    };
-    int[][] arr5 = new int[][] {    // no
-            {0, 1, 0},
-    };
+    int[][] arr1 = ArrayUtils.readIntArray2FromFile("testFiles/input01.txt");
+    int[][] arr2 = ArrayUtils.readIntArray2FromFile("testFiles/input02.txt");
+    int[][] arr3 = ArrayUtils.readIntArray2FromFile("testFiles/input03.txt");
+    int[][] arr4 = ArrayUtils.readIntArray2FromFile("testFiles/input04.txt");
+    int[][] arr5 = ArrayUtils.readIntArray2FromFile("testFiles/input05.txt");
 
 }

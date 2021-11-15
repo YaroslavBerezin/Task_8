@@ -1,17 +1,18 @@
 package ru.sc.vsu.berezin_y_a;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Locale.setDefault(Locale.ROOT);
         TestProgram testProgram = new TestProgram();
 
         if (!testProgram.test()) {
-            System.out.println("Test error");
+            System.out.println("Test error. Check file 'testResutl.txt'.");
             return;
         } else {
             System.out.println("All tests completed");

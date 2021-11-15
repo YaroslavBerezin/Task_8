@@ -1,26 +1,39 @@
 package ru.sc.vsu.berezin_y_a;
 
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class TestProgram {
 
     Logic logic = new Logic();
     TestCase testCase = new TestCase();
 
-    public boolean test() {
-        if (logic.solution(testCase.arr1) != "no") {
-            System.out.println("Test 1 is not completed");
+    public boolean test() throws IOException {
+        FileWriter writer = new FileWriter("testFiles/testResult.txt");
+        if (logic.solution(testCase.arr1) == "no") {
+            writer.write("Test 1 is not completed");
+            writer.flush();
+            writer.close();
             return false;
         } else if (logic.solution(testCase.arr2) != "yes") {
-            System.out.println("Test 2 is not completed");
+            writer.write("Test 2 is not completed");
+            writer.flush();
+            writer.close();
             return false;
         } else if (logic.solution(testCase.arr3) != "no") {
-            System.out.println("Test 3 is not completed");
+            writer.write("Test 3 is not completed");
+            writer.flush();
+            writer.close();
             return false;
         } else if (logic.solution(testCase.arr4) != "yes") {
-            System.out.println("Test 4 is not completed");
+            writer.write("Test 4 is not completed");
+            writer.flush();
+            writer.close();
             return false;
         } else if (logic.solution(testCase.arr5) != "no") {
-            System.out.println("Test 5 is not completed");
+            writer.write("Test 4 is not completed");
+            writer.flush();
+            writer.close();
             return false;
         } else {
             return true;
