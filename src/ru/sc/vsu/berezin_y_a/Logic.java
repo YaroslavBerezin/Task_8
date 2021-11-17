@@ -10,8 +10,8 @@ public class Logic {
         }
     }
 
-    private boolean isArrayIncreasing(int[][] arr) {
-        int lustElement = -999;
+    public boolean isArrayIncreasing(int[][] arr) {
+        int lustElement = -99999;
         for (int i = 0; i < arr[arr.length - 1].length; i++) {
             if (i % 2 == 0) {
                 for (int j = arr.length - 1; j >= 0; j--) {
@@ -32,8 +32,8 @@ public class Logic {
         return true;
     }
 
-    private boolean isArrayDecreasing(int[][] arr) {
-        int lustElement = 999;
+    public boolean isArrayDecreasing(int[][] arr) {
+        int lustElement = 99999;
         for (int i = 0; i < arr[arr.length - 1].length; i++) {
             if (i % 2 == 0) {
                 for (int j = arr.length - 1; j >= 0; j--) {
