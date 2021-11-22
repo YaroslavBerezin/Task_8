@@ -10,15 +10,6 @@ public class Main {
 
         Locale.setDefault(Locale.ROOT);
 
-//        TestProgram testProgram = new TestProgram();
-//
-//        if (!testProgram.test()) {
-//            System.out.println("Test error. Check file 'testResutl.txt'.");
-//            return;
-//        } else {
-//            System.out.println("All tests completed");
-//        }
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
