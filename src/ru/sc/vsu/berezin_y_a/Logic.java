@@ -2,50 +2,67 @@ package ru.sc.vsu.berezin_y_a;
 
 public class Logic {
 
+    State state;
+
     public String solution(int[][] arr) {
-        if (isArrayDecreasing(arr) || isArrayIncreasing(arr)) {
+        if (analyzeArray(arr)) {
             return "yes";
         } else {
             return "no";
         }
     }
 
-    public boolean isArrayIncreasing(int[][] arr) {
-        int lustElement = -99999;
-        for (int i = 0; i < arr[arr.length - 1].length; i++) {
-            if (i % 2 == 0) {
-                for (int j = arr.length - 1; j >= 0; j--) {
-                    if (lustElement >= arr[j][i]) {
-                        return false;
-                    }
-                    lustElement = arr[j][i];
-                }
+    public boolean analyzeArray(int[][] arr) {
+        int lustElement;
+        if (arr.length > 1) {
+            if (arr[arr.length - 1][0] >= arr[arr.length - 2][0]) {
+                state = State.Decreasing;
+                lustElement = 9999;
             } else {
-                for (int[] ints : arr) {
-                    if (lustElement >= ints[i]) {
-                        return false;
-                    }
-                    lustElement = ints[i];
-                }
+                state = State.Increasing;
+                lustElement = -9999;
             }
+        } else if (arr[0].length > 1) {
+            if (arr[0][0] >= arr[0][1]) {
+                state = State.Decreasing;
+                lustElement = 9999;
+            } else {
+                state = State.Increasing;
+                lustElement = -9999;
+            }
+        } else {
+            return true;
         }
-        return true;
-    }
-
-    public boolean isArrayDecreasing(int[][] arr) {
-        int lustElement = 99999;
         for (int i = 0; i < arr[arr.length - 1].length; i++) {
             if (i % 2 == 0) {
                 for (int j = arr.length - 1; j >= 0; j--) {
-                    if (lustElement <= arr[j][i]) {
-                        return false;
+                    switch (state) {
+                        case Increasing -> {
+                            if (lustElement >= arr[j][i]) {
+                                return false;
+                            }
+                        }
+                        case Decreasing -> {
+                            if (lustElement <= arr[j][i]) {
+                                return false;
+                            }
+                        }
                     }
                     lustElement = arr[j][i];
                 }
             } else {
                 for (int[] ints : arr) {
-                    if (lustElement <= ints[i]) {
-                        return false;
+                    switch (state) {
+                        case Increasing -> {
+                            if (lustElement >= ints[i]) {
+                                return false;
+                            }
+                        }
+                        case Decreasing -> {
+                            if (lustElement <= ints[i]) {
+                                return false;
+                            }
+                        }
                     }
                     lustElement = ints[i];
                 }
