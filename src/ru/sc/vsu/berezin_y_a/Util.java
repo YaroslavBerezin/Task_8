@@ -1,8 +1,5 @@
 package ru.sc.vsu.berezin_y_a;
 
-import ru.sc.vsu.berezin_y_a.utils.ArrayUtils;
-import ru.sc.vsu.berezin_y_a.utils.JTableUtils;
-
 import javax.swing.JOptionPane;
 import java.util.Scanner;
 import java.util.List;
@@ -75,7 +72,7 @@ public class Util {
             list.add(scanner.nextInt());
         }
         Integer[] arr = list.toArray(new Integer[0]);
-        return ArrayUtils.toPrimitive(arr);
+        return Util.toPrimitive(arr);
     }
 
     public static int[][] toIntArray2(String[] lines) {
@@ -490,7 +487,7 @@ public class Util {
     public static <T> T[][] readMatrixFromJTable(
             JTable table, Class<T> clazz, Function<String, ? extends T> converter,
             boolean errorIfEmptyCell, T emptyCellValue
-    ) throws JTableUtils.JTableUtilsException {
+    ) throws Util.JTableUtilsException {
         TableModel tableModel = table.getModel();
         int rowCount = tableModel.getRowCount(), colCount = tableModel.getColumnCount();
         T[][] matrix = (T[][]) Array.newInstance(clazz, rowCount, colCount);
@@ -500,7 +497,7 @@ public class Util {
                 Object obj = tableModel.getValueAt(r, c);
                 if (obj == null || obj instanceof String && ((String) obj).trim().length() == 0) {
                     if (errorIfEmptyCell) {
-                        throw new JTableUtils.JTableUtilsException(String.format("Empty value on (%d, %d) cell", r, c));
+                        throw new Util.JTableUtilsException(String.format("Empty value on (%d, %d) cell", r, c));
                     } else {
                         value = emptyCellValue;
                     }
@@ -516,8 +513,8 @@ public class Util {
     public static int[][] readIntMatrixFromJTable(JTable table) throws ParseException {
         try {
             Integer[][] matrix = readMatrixFromJTable(table, Integer.class, Integer::parseInt, false, 0);
-            return (int[][]) Arrays.stream(matrix).map(ArrayUtils::toPrimitive).toArray((n) -> new int[n][]);
-        } catch (JTableUtils.JTableUtilsException impossible) {
+            return (int[][]) Arrays.stream(matrix).map(Util::toPrimitive).toArray((n) -> new int[n][]);
+        } catch (Util.JTableUtilsException impossible) {
         }
         return null;
     }
