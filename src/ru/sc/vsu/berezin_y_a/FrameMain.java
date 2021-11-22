@@ -9,11 +9,9 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
-import java.text.ParseException;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import com.intellij.uiDesigner.core.Spacer;
 import ru.sc.vsu.berezin_y_a.utils.JTableUtils;
 import ru.sc.vsu.berezin_y_a.utils.SwingUtils;
 import ru.sc.vsu.berezin_y_a.utils.ArrayUtils;
