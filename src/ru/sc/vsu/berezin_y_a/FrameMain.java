@@ -12,9 +12,6 @@ import java.nio.charset.StandardCharsets;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import ru.sc.vsu.berezin_y_a.utils.JTableUtils;
-import ru.sc.vsu.berezin_y_a.utils.SwingUtils;
-import ru.sc.vsu.berezin_y_a.utils.ArrayUtils;
 
 public class FrameMain extends JFrame {
 
@@ -48,10 +45,10 @@ public class FrameMain extends JFrame {
         fileChooserSave.addChoosableFileFilter(filter);
 
 
-        JTableUtils.initJTableForArray(tableInput, 40, true, true,
+        Util.initJTableForArray(tableInput, 40, true, true,
                 true, true);
         tableInput.setRowHeight(30);
-        JTableUtils.writeArrayToJTable(tableInput, new int[][]{
+        Util.writeArrayToJTable(tableInput, new int[][]{
                 {3, 4, 9},
                 {2, 5, 8},
                 {1, 6, 7},
@@ -65,10 +62,10 @@ public class FrameMain extends JFrame {
                 Logic logic = new Logic();
                 int[][] matrix = new int[0][];
                 try {
-                    matrix = JTableUtils.readIntMatrixFromJTable(tableInput);
+                    matrix = Util.readIntMatrixFromJTable(tableInput);
                     textFieldForAnswer.setText("Answer: " + logic.solution(matrix));
                 } catch (Exception e) {
-                    SwingUtils.showErrorMessageBox(e);
+                    Util.showErrorMessageBox(e);
                 }
             }
         });
@@ -78,11 +75,11 @@ public class FrameMain extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
                     if (fileChooserOpen.showOpenDialog(panelMain) == JFileChooser.APPROVE_OPTION) {
-                        int[][] arr = ArrayUtils.readIntArray2FromFile(fileChooserOpen.getSelectedFile().getPath());
-                        JTableUtils.writeArrayToJTable(tableInput, arr);
+                        int[][] arr = Util.readIntArray2FromFile(fileChooserOpen.getSelectedFile().getPath());
+                        Util.writeArrayToJTable(tableInput, arr);
                     }
                 } catch (Exception e) {
-                    SwingUtils.showErrorMessageBox(e);
+                    Util.showErrorMessageBox(e);
                 }
             }
         });
@@ -91,11 +88,11 @@ public class FrameMain extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
-                    int[][] matrix = ArrayUtils.createRandomIntMatrix(
+                    int[][] matrix = Util.createRandomIntMatrix(
                             tableInput.getRowCount(), tableInput.getColumnCount(), 20);
-                    JTableUtils.writeArrayToJTable(tableInput, matrix);
+                    Util.writeArrayToJTable(tableInput, matrix);
                 } catch (Exception e) {
-                    SwingUtils.showErrorMessageBox(e);
+                    Util.showErrorMessageBox(e);
                 }
             }
         });
@@ -114,7 +111,7 @@ public class FrameMain extends JFrame {
                         writer.close();
                     }
                 } catch (Exception e) {
-                    SwingUtils.showErrorMessageBox(e);
+                    Util.showErrorMessageBox(e);
                 }
             }
         });
