@@ -2,7 +2,7 @@ package ru.sc.vsu.berezin_y_a;
 
 public class Logic {
 
-    State state;
+    ArrayState arrayState;
 
     public String solution(int[][] arr) {
         if (analyzeArray(arr)) {
@@ -16,18 +16,18 @@ public class Logic {
         int lustElement;
         if (arr.length > 1) {
             if (arr[arr.length - 1][0] >= arr[arr.length - 2][0]) {
-                state = State.DECREASING;
+                arrayState = ArrayState.DECREASING;
                 lustElement = 9999;
             } else {
-                state = State.INCREASING;
+                arrayState = ArrayState.INCREASING;
                 lustElement = -9999;
             }
         } else if (arr[0].length > 1) {
             if (arr[0][0] >= arr[0][1]) {
-                state = State.DECREASING;
+                arrayState = ArrayState.DECREASING;
                 lustElement = 9999;
             } else {
-                state = State.INCREASING;
+                arrayState = ArrayState.INCREASING;
                 lustElement = -9999;
             }
         } else {
@@ -36,7 +36,7 @@ public class Logic {
         for (int i = 0; i < arr[arr.length - 1].length; i++) {
             if (i % 2 == 0) {
                 for (int j = arr.length - 1; j >= 0; j--) {
-                    switch (state) {
+                    switch (arrayState) {
                         case INCREASING -> {
                             if (lustElement >= arr[j][i]) {
                                 return false;
@@ -52,7 +52,7 @@ public class Logic {
                 }
             } else {
                 for (int[] ints : arr) {
-                    switch (state) {
+                    switch (arrayState) {
                         case INCREASING -> {
                             if (lustElement >= ints[i]) {
                                 return false;

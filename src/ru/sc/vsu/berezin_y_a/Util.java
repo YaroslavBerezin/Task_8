@@ -519,4 +519,48 @@ public class Util {
         return null;
     }
 
+    public static String[] readLinesFromConsole() {
+        Scanner scanner = new Scanner(System.in);
+        List<String> lines = new ArrayList<>();
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            if (line == null || line.trim().length() == 0)
+                break;
+            lines.add(line);
+        }
+        return lines.toArray(new String[0]);
+    }
+
+    public static int[][] readIntArray2FromConsole(String arrName, boolean checkMatrix) {
+        while (true) {
+            try {
+                if (arrName == null || arrName.length() == 0) {
+                    arrName = "";
+                } else {
+                    arrName = " " + arrName;
+                }
+                System.out.printf("Enter 2 array%s:%n", arrName);
+                int[][] arr2 = toIntArray2(readLinesFromConsole());
+                if (checkMatrix) {
+                    for (int i = 1; i < arr2.length; i++)
+                        if (arr2[i].length != arr2[0].length) {
+                            throw new Exception("Strings have different count of elements");
+                        }
+                }
+                return arr2;
+            }
+            catch(Exception e) {
+                System.out.print("Вы ошиблись, попробуйте еще раз! ");
+            }
+        }
+    }
+
+    public static int[][] readIntArray2FromConsole(boolean checkMatrix) {
+        return readIntArray2FromConsole(null, checkMatrix);
+    }
+
+    public static int[][] readIntArray2FromConsole() {
+        return readIntArray2FromConsole(false);
+    }
+
 }

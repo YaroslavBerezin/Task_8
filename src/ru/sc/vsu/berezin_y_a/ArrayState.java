@@ -1,6 +1,6 @@
 package ru.sc.vsu.berezin_y_a;
 
-public enum State {
+public enum ArrayState {
     INCREASING,
     DECREASING
 }
