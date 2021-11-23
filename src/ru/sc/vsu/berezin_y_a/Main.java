@@ -80,7 +80,7 @@ public class Main {
                         writer.println("Answer:" + logic.solution(arr));
                         writer.close();
                     }
-                    System.out.println(logic.solution(arr));
+                    System.out.println("Answer:" + logic.solution(arr));
                 }
                 case READ_FROM_CONSOLE -> {
                     arr = Util.readIntArray2FromConsole();
